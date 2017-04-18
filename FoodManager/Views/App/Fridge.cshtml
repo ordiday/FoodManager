@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div ng-init="getFoodProducts()" id="foodProductPanel" class="col-sm-12">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="custom-search-input" class="border-gray">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-sm" ng-model="searchText" ng-change="searchProduct(searchText)" placeholder="Поиск" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-sm" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="foodProduct in foodProducts" class="col-md-2">
+                <div class="food-product border-gray color-gray" ng-style="getStyleForFoodProduct(foodProduct)">
+                    <div class="prod-info">
+                        {{foodProduct.Title}}
+                    </div>
+                    <div class="prod-controls">
+                        <input type="button" class="btn" ng-click="addProductToFridge(foodProduct)" value="Добавить" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fridge-panel" class="col-sm-12">
+        <div class="row" ng-init="getFridgeItems()">
+            <div class="col-sm-12 mypanel-title-container">
+                <span class="mypanel-title">Есть на кухне</span>
+            </div>
+            <div ng-repeat="fridgeItem in fridgeItems" class="col-sm-2">
+                <div class="food-product border-gray" ng-style="getStyleForFoodProduct(fridgeItem.Product)">
+                    <div class="prod-info">
+                        <div class="prod-info-title-and-date">
+                            <div>{{fridgeItem.Product.Title}}</div>
+                            <div>{{fridgeItem.AddDate | date:'dd MMM'}}</div>
+                        </div>
+                        <div class="fridge-item-status-panel">
+                            <img popover-trigger="'mouseenter'" popover-placement="right-bottom" uib-popover-html="getExpiresSoonTooltip(fridgeItem)" popover-class="my-popover" data-ng-class="{'alert-border':expiresSoon(fridgeItem)}" ng-if="hasStoragePeriodInfo(fridgeItem)"  src="~/Content/images/expired1600.png" />
+                            <img popover-trigger="'mouseenter'" popover-placement="right-bottom" uib-popover="{{fridgeItem.StorageAdvice}}" popover-class="my-popover" ng-if="hasAdvice(fridgeItem)" src="~/Content/images/storageAdvice.png" />
+                        </div>
+                    </div>
+                    <div class="prod-controls">
+                        <button class="btn itemButton" ng-click="removeFromFridge(fridgeItem)">Убрать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

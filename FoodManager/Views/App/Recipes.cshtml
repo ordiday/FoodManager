@@ -1,0 +1,38 @@
+﻿<script type="text/ng-template" id="recipeContentTemplate">
+    <div style="padding:15px;background-color:white">
+        <h4>{{$ctrl.currentRecipe.Title}}</h4>
+
+        Ингредиенты <br />
+        <ol>
+            <div ng-repeat="product in $ctrl.currentRecipe.Products">
+                <li>{{product.Title}}</li>
+            </div>
+        </ol>
+        Описание:<br />
+        {{$ctrl.currentRecipe.Explanation}}<br /><br />
+        Шаги приготовления:<br />
+        <ol>
+            <div ng-repeat="step in $ctrl.currentRecipe.Steps">
+                <div ng-if="step.Image!=null" style="width:100%; text-align:center">
+                    <img ng-src="{{step.Image}}" />
+                </div>
+                <li>{{step.Description}}</li>
+            </div>
+        </ol>
+    </div>
+</script>
+
+<div class="row">
+    <div ng-init="getRecipes()" id="recipesPanel" class="col-sm-12">
+        <div class="row">
+            <div ng-repeat="recipe in recipes" class="col-md-2">
+                <div class="recipe border-gray color-gray" ng-style="getStyleForRecipe(recipe)" ng-click="openRecipe(recipe)">
+                    <div ng-if="!recipe.IsYummly" class="recipe-info">{{recipe.Title}}</div>
+                    <div ng-if="recipe.IsYummly" class="recipe-info">
+                        <a>{{recipe.Title}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

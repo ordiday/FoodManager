@@ -1,0 +1,48 @@
+﻿<div class="row">
+    <div ng-init="getFoodProducts()" id="foodProductPanel" class="col-sm-12">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="custom-search-input" class="border-gray">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-sm" ng-model="text" ng-change="searchProduct(text)" placeholder="Поиск" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-sm" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="foodProduct in foodProducts" class="col-md-2">
+                <div class="food-product border-gray color-gray" ng-style="getStyleForFoodProduct(foodProduct)">
+                    <div class="prod-info">
+                        {{foodProduct.Title}}
+                    </div>
+                    <div class="prod-controls">
+                        <input type="button" class="btn" ng-disabled="productIsInCurrentShoppingList(foodProduct)" ng-click="addProductToShoppingList(foodProduct)" value="Добавить" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="curent-shopping-list-panel" class="col-sm-12">
+        <div class="row" ng-init="getCurrentShoppingList()">
+            <div class="col-sm-12 mypanel-title-container">
+                <span class="mypanel-title">Текущий список покупок</span>
+            </div>
+            <div ng-repeat="product in currentShoppingList.Products" class="col-sm-2">
+                <div class="food-product border-gray" ng-style="getStyleForFoodProduct(product)">
+                    <div class="prod-info">
+                        <div>{{product.Title}}</div>
+                    </div>
+                    <div class="prod-controls">
+                        <button class="btn" ng-click="removeFromCurrentShoppingList(product)" class="itemButton">Убрать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

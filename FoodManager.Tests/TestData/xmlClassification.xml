@@ -1,0 +1,41 @@
+﻿<classification>
+  <class name="FirstLevelClass1">
+    <attribute type="storagePeriod">
+      <period>
+        <from>
+          <quantity>48</quantity>
+          <unit>hour</unit>
+        </from>
+        <to>
+          <quantity>6</quantity>
+          <unit>month</unit>
+        </to>
+      </period>
+      <temperature>
+        <from>6</from>
+        <to>10</to>
+      </temperature>
+    </attribute>
+    <attribute type="storagePeriod">
+      <period>
+        <from>
+          <quantity>2</quantity>
+          <unit>day</unit>
+        </from>
+        <to>
+          <quantity>3</quantity>
+          <unit>day</unit>
+        </to>
+      </period>
+      <temperature>
+        <from>1</from>
+        <to>3</to>
+      </temperature>
+    </attribute>
+    <class name="SecondLevelClass11"/>
+    <class name="SecondLevelClass12"/>
+  </class>
+  <class name="FirstLevelClass2">
+    <class name="SecondLevelClass21"/>
+  </class>
+</classification>
