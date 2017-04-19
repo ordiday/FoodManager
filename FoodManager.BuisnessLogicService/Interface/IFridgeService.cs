@@ -1,5 +1,5 @@
-﻿using FoodManager.Data.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FoodManager.Data.Models;
 
 namespace FoodManager.BuisnessLogicService.Interface
 {
